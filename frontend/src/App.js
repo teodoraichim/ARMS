@@ -1,21 +1,16 @@
 import React from 'react';
-import './styles/background-anim.css'
-import './styles/feed-page.css'
-import './styles/generic-components.css'
-import './styles/normalize.css'
-import './styles/popup.css'
-import './styles/style.css'
-import './styles/topic-choice.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Header } from './containers/Header/Header';
+import Footer from './containers/Footer/Footer'
+import Booklist from './containers/BooksList/Booklist';
 
-
-import Header from "./components/Header";
-import Newsfeed from "./components/news-feed/Newsfeed";
 
 function App() {
   return (
       <React.Fragment>
-            <Header/>
-            <Newsfeed />
+          <Header></Header>  
+          <Booklist></Booklist>
+          <Footer></Footer>
       </React.Fragment>
   );
 }
