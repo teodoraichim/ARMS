@@ -4,7 +4,6 @@ const baseURL = "http://localhost:5000/book";
 
 
 export const clearFilters = () => {
-    console.log("ok");
     return {
       type: "CLEAR_FILTERS"
     };
@@ -75,4 +74,24 @@ export const loadBooks = (currentPage, filters) => {
              
           };
 
+}
+
+export const getBook = id => {
+    return dispatch => {
+        axios
+            .get(baseURL + `/id/${id}`).then(response => {
+                dispatch({
+                  type: "GET_BOOK",
+                  payload: {
+                    currentBook: response.data[0],
+                  }
+                });
+              })
+             
+          };
+};
+export const restBook = () => {
+  return {
+    type: "RESET_BOOK"
+  };
 }

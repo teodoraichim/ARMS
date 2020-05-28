@@ -4,6 +4,7 @@ import Book from './Book';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { loadBooks } from "../../actions/bookActions";
+import Error from './Error'
 
 export const List = styled.div`
 width: 100%;
@@ -33,11 +34,18 @@ export class Booklist extends Component {
   }
     render() {
         const books = this.props.booksList;
+        if(books.length> 0) {
         return (
             <List>
                 { books.map(book => <Book book={book} key={book.id} />)}
             </List>
-        )
+        ) 
+        }
+        else {
+            return (
+                <Error />
+            )
+        }
     }
 }
 

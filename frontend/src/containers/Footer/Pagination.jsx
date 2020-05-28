@@ -6,7 +6,7 @@ import { changePage } from "../../actions/bookActions";
 
 
 export const ChangePage = styled.span`
-  color: rgb(200,200,200);
+  color: rgb(100,100,100);
   font-size: 18px;
   line-height: 20px;
   display: flex;
@@ -19,11 +19,11 @@ export const ChangePage = styled.span`
   button {
     border: 0px;
     background: none;
-    color: rgb(200,200,200);
+    color: rgb(100,100,100);
     cursor: pointer;
   }
   button:hover {
-    color: white;
+    color: black;
   }
   button:focus {
     outline: none;
@@ -35,7 +35,7 @@ export const ChangePage = styled.span`
   }
   a,
   p {
-    color: rgb(200,200,200);
+    color: rgb(100,100,100);
     text-decoration: none;
     margin-left: 3px;
     margin-right: 3px;
@@ -45,8 +45,11 @@ export const ChangePage = styled.span`
   }
   
   button.active {
-    color: white;
+    color: black;
     font-weight: 600px;
+    border-bottom: 2px;
+    border-bottom-color: black;
+    border-bottom-style: solid;
   }
 `;
 
@@ -110,7 +113,7 @@ export class Pagination extends React.Component {
     const currentPage = this.props.currentPage;
     const numberPages = this.props.numberPages;
 
-
+    if(numberPages>1) {
     return (
       <ChangePage>
         {this.getBackButton(currentPage)}
@@ -121,7 +124,8 @@ export class Pagination extends React.Component {
         </div>
         {this.getNextButton(currentPage, numberPages)}
       </ChangePage>
-    );
+    );}
+    else return null;
   }
 }
 

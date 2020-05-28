@@ -14,7 +14,7 @@ export default class Footer extends Component {
     render() {
         return (
             <React.Fragment>
-                <FooterRow height="70px">
+                <FooterRow height="70px" color="white">
                     <Col>
                     <Pagination></Pagination>
                     </Col>

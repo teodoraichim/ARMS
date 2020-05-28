@@ -10,7 +10,8 @@ const initialBookSate = {
     booksPerPage: 40,
     booksNumber: 0,
     categories: [],
-    totalPages: 20
+    totalPages: 20,
+    currentBook: {}
 };
 
 export const bookReducer = (state = initialBookSate, action) => {
@@ -62,6 +63,18 @@ export const bookReducer = (state = initialBookSate, action) => {
             return {
                 ...state,
                 categories: action.payload.categories
+            }
+        }
+        case 'GET_BOOK': {
+            return{
+                ...state,
+                currentBook: action.payload.currentBook
+            }
+        }
+        case 'RESET_BOOK': {
+            return{
+                ...state,
+                currentBook: {}
             }
         }
         default: {

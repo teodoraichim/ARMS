@@ -36,7 +36,7 @@ export class Book extends Component {
                     <Card.Text>{`Category: ${this.props.book.Category}`} </Card.Text>
                     <Card.Text>{`Format: ${this.props.book["File format"]}`}</Card.Text>
                     <Card.Text>{`Size: ${this.props.book["File size"]}`}</Card.Text>
-                    <Button variant="link"  onClick={() => this.props.history.push(`/book/${1}`)}>See more info</Button> 
+                    <Button variant="link"  onClick={() => this.props.history.push(`/book/${this.props.book._id}`)}>See more info</Button> 
                 </Card.Body>
                 </BookCard>
             </React.Fragment>

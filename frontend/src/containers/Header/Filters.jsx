@@ -97,9 +97,7 @@ export class Filters extends Component {
                     <Col xs={1}>
                         <FilterButton onClick={this.handleSubmit}>APPLY</FilterButton>
                     </Col>
-                    <Col xs={1}>
-                        <FilterButton onClick={() => this.props.clearFilters()}>CLEAR</FilterButton>
-                    </Col>
+                    
                 </Row>
             </Form>
         </React.Fragment>
