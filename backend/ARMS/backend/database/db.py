@@ -4,8 +4,8 @@ from pymongo import MongoClient
 db_connection = r"mongodb://arms:armsteam@cluster0-shard-00-00-su88w.mongodb.net:27017,cluster0-shard-00-01-su88w.mongodb.net:27017,cluster0-shard-00-02-su88w.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority"
 cluster = MongoClient(db_connection)
 db = cluster["arms"]
-collection = db["book collection"]
-resource_path = r"D:\Facultate\ARMS\serialized_data\books.json"
+collection = db["Books"]
+resource_path = r"C:\Users\sturcu\Desktop\facultate\ARMS\ARMS\scarpers2\books.json"
 
 
 def get_json_resource(path):

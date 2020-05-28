@@ -51,9 +51,9 @@ def get_categories():
 def filter_books(author, isbn, year, language, category, title):
     custom_filter = {}
     if author is not None:
-        custom_filter["Author"] = {"$regex": author}
+        custom_filter["Authors"] = {"$regex": author}
     if isbn is not None:
-        custom_filter["ISBN-10"] = isbn
+        custom_filter["Isbn"] = {"$regex": isbn}
     if year is not None:
         custom_filter["Year"] = " " + year
     if language is not None:
