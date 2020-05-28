@@ -15,7 +15,7 @@ with open("../scarpers/SerializedData/books.json") as f:
         book['Download'] = '' # TO BE REMOVED
         if isbn.count('-') > 0:
             isbn = isbn.split('-')[1]
-        URL = f'https://www.googleapis.com/books/v1/volumes?q=isbn:{isbn}&country=US&key=AIzaSyBHrnTcFpMCg-W0JPzf4ae01qL1xGPBWKk'
+        URL = f'https://www.googleapis.com/books/v1/volumes?q=isbn:{isbn}&country=US&key=here the key'
         r = requests.get(url = URL)
         
         # from proxy_requests.proxy_requests import ProxyRequests
