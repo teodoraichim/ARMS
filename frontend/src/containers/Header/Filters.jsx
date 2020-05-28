@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col'
 import styled from "styled-components";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { setFilters, clearFilters } from "../../actions/bookActions";
+import { setFilters, clearFilters, getCategories, loadBooks } from "../../actions/bookActions";
 
 export const FilterButton = styled.button`
 background:none;
@@ -28,7 +28,7 @@ label{
     
 }
 
-input, select{
+input, select, number{
     border: none;
     border-radius: 2px;
     width:150px;
@@ -36,18 +36,31 @@ input, select{
 `
 export class Filters extends Component {
 
+
+    constructor(props) {
+        super(props);
+    
+        this.handleSubmit = this.handleSubmit.bind(this);
+      }
     handleInputChange = (fieldName, fieldValue) => {
         this.props.setFilters(fieldName, fieldValue);
+        console.log(this.props.filters)
       };
     
       handleSubmit(event) {
+        this.props.loadBooks(1, this.props.filters);
+      }
+
+      componentDidMount() {
+        this.props.getCategories();
         
       }
     render(){
+        const categories = this.props.categories;
         return (
         <React.Fragment>
-            <Form>
-                <Row>
+            <Form style={{width:"53%"}}>
+                <Row style={{width:"100%"}}>
                 
                     <Col>
                         <RestyledFormGroup controlId="title">
@@ -69,10 +82,15 @@ export class Filters extends Component {
                             <Form.Control as="select" defaultValue={this.props.filters.cathegory}
                             onChange={e => this.handleInputChange("cathegory", e.target.value)} >
                                 <option value="All">All</option>
-                                <option value="2">2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                {categories.map(categ => <option key={categ} value={categ}>{categ}</option>)}
+                        </Form.Control>
+                        </RestyledFormGroup>
+                    </Col>
+                    <Col>
+                        <RestyledFormGroup>
+                        <Form.Label>Year:</Form.Label>
+                            <Form.Control type="number" defaultValue={this.props.filters.year}
+                            onChange={e => this.handleInputChange("year", e.target.value)} >
                         </Form.Control>
                         </RestyledFormGroup>
                     </Col>
@@ -93,12 +111,12 @@ export class Filters extends Component {
 const mapStateToProps = state => {
     return {
       filters: state.filters,
-      
+      categories: state.categories
     };
   };
   
   const mapDispatchToProps = dispatch => ({
-    ...bindActionCreators({ setFilters, clearFilters }, dispatch)
+    ...bindActionCreators({ setFilters, clearFilters, getCategories, loadBooks }, dispatch)
   });
   
   export default connect(

@@ -3,23 +3,27 @@ const initialBookSate = {
     filters: {
         title:"",
         author: "",
-        cathegory: "All"
+        cathegory: "All",
+        year: "",
     },
     currentPage: 1,
     booksPerPage: 40,
     booksNumber: 0,
-    numberPages: 20
+    categories: [],
+    totalPages: 20
 };
 
 export const bookReducer = (state = initialBookSate, action) => {
     switch (action.type) {
+        
         case 'SET_FILTERS': {
+            console.log({[action.payload.fieldName]:action.payload.fieldValue});
             return {
                 ...state,
                 filters: {
                     ...state.filters,
                     [action.payload.fieldName]: action.payload.fieldValue
-                  }
+                }
             }
         }
         case 'CHANGE_PAGE': {
@@ -35,16 +39,29 @@ export const bookReducer = (state = initialBookSate, action) => {
             }
         }
         case 'CLEAR_FILTER': {
+            console.log("oook")
                 return {
                     ...state,
-                    filter: initialBookSate.filter
+                    filters:{
+                        ...state.filters,
+                        title:"",
+                        author: "",
+                        cathegory: "All",
+                        year: "",
+                    },
                 }
         }
         case 'LOAD_BOOKS': {
             return {
                 ...state,
                 booksList: action.payload.booksList,
-                booksNumber: action.payload.booksNumber
+                totalPages: action.payload.totalPages.pages
+            }
+        }
+        case 'GET_CATEGORIES': {
+            return {
+                ...state,
+                categories: action.payload.categories
             }
         }
         default: {

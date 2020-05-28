@@ -83,7 +83,6 @@ export class Pagination extends React.Component {
   getPages = (currentPage, numberPages) => {
     let result = [];
     for (let i = currentPage - 2; i <= currentPage + 2; i++) {
-      console.log(i);
       if (i >= 1 && i <= numberPages) {
         if (i === currentPage)
           result.push(
@@ -129,7 +128,7 @@ export class Pagination extends React.Component {
 const mapStateToProps = state => {
   return {
     currentPage: state.currentPage,
-    numberPages: state.numberPages,
+    numberPages: state.totalPages,
     
   };
 };
